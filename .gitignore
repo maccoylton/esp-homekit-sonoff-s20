@@ -1,0 +1,5 @@
+esp-homekit-sonoff-s20.xcodeproj
+build/
+firmware/
+src/.DS_Store
+.DS_Store
