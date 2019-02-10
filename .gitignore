@@ -1,4 +1,4 @@
-esp-homekit-sonoff-s20.xcodeproj
+esp-homekit-sonoff-s20.xcodeproj/
 build/
 firmware/
 src/.DS_Store
