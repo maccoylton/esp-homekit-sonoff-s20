@@ -55,7 +55,7 @@ homekit_characteristic_t model        = HOMEKIT_CHARACTERISTIC_(MODEL,         D
 homekit_characteristic_t revision     = HOMEKIT_CHARACTERISTIC_(FIRMWARE_REVISION,  FW_VERSION);
 
 
-// The GPIO pin that is connected to the relay and th blue LED on the Sonoff S20.
+// The GPIO pin that is connected to the relay and the blue LED on the Sonoff S20.
 const int relay_gpio = 12;
 // The GPIO pin that is connected to the green LED on the Sonoff S20.
 const int LED_GPIO = 13;
