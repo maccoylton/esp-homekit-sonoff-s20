@@ -78,9 +78,9 @@ const int status_led_gpio = 13; /*set the gloabl variable for the led to be sued
 
 void button_single_press_callback(uint8_t gpio, void* args, const uint8_t param) {
     
-    printf("button_single_press_callback:Toggling relay\n");
+    printf("button_single_press_callback:Button %d, Toggling relay on gpio %d\n", gpio, relay_gpio);
     switch_on.value.bool_value = !switch_on.value.bool_value;
-    relay_write(switch_on.value.bool_value, gpio);
+    relay_write(switch_on.value.bool_value, relay_gpio);
     
 }
 
@@ -146,8 +146,8 @@ void user_init(void) {
     standard_init (&name, &manufacturer, &model, &serial, &revision);
    
     gpio_init();
-    
-    wifi_config_init("SonoffMini", NULL, on_wifi_ready);
+
+    wifi_config_init("SonoffS20", NULL, on_wifi_ready);
 
  
 }
