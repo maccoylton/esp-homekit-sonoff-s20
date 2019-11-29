@@ -124,6 +124,7 @@ homekit_accessory_t *accessories[] = {
             &switch_on,
             &ota_trigger,
             &wifi_reset,
+            &wifi_check_interval,
             NULL
         }),
         NULL
