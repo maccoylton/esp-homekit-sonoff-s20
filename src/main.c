@@ -53,6 +53,8 @@
 void switch_on_callback(homekit_characteristic_t *_ch, homekit_value_t on, void *context);
 
 homekit_characteristic_t wifi_reset   = HOMEKIT_CHARACTERISTIC_(CUSTOM_WIFI_RESET, false, .setter=wifi_reset_set);
+homekit_characteristic_t wifi_check_interval   = HOMEKIT_CHARACTERISTIC_(CUSTOM_WIFI_CHECK_INTERVAL, 10, .setter=wifi_check_interval_set);
+/* checks the wifi is connected and flashes status led to indicated connected */
 homekit_characteristic_t ota_trigger  = API_OTA_TRIGGER;
 homekit_characteristic_t name         = HOMEKIT_CHARACTERISTIC_(NAME, DEVICE_NAME);
 homekit_characteristic_t manufacturer = HOMEKIT_CHARACTERISTIC_(MANUFACTURER,  DEVICE_MANUFACTURER);
@@ -72,7 +74,7 @@ const int LED_GPIO = 13;
 const int button_gpio = 0;
 
 int led_off_value=1; /* global varibale to support LEDs set to 0 where the LED is connected to GND, 1 where +3.3v */
-const int status_led_gpio = 13; /*set the gloabl variable for the led to be sued for showing status */
+const int status_led_gpio = 13; /*set the gloabl variable for the led to be used for showing status */
 
 
 
@@ -129,6 +131,12 @@ homekit_accessory_t *accessories[] = {
     NULL
 };
 
+
+void accessory_init_not_paired (void) {
+    /* initalise anything you don't want started until wifi and homekit imitialisation is confirmed, but not paired */
+}
+
+
 void accessory_init (void ){
     /* initalise anything you don't want started until wifi and pairing is confirmed */
     
@@ -147,7 +155,7 @@ void user_init(void) {
    
     gpio_init();
 
-    wifi_config_init("SonoffS20", NULL, on_wifi_ready);
+    wifi_config_init(DEVICE_NAME, NULL, on_wifi_ready);
 
  
 }
